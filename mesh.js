@@ -28,7 +28,7 @@ class GuaMesh extends GuaObject {
             let v = GuaVector.new(points[i], points[i+1], points[i+2])
             let c = GuaColor.randomColor()
             // let c = GuaColor.red()
-            // vertices.push(GuaVertex.new(v, c))
+            vertices.push(GuaVertex.new(v, c))
         }
 
         // 12 triangles * 3 vertices each = 36 vertex indices
