@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>index</title>
+        <style>
+            canvas {
+                outline: 1px dashed lightskyblue;
+                position: fixed;
+                top: 40px;
+            }
+        </style>
+        <!-- 引入所有用到的文件 -->
+        <script src='utils.js'></script>
+        <script src='gua_object.js'></script>
+        <script src='vector.js'></script>
+        <script src='color.js'></script>
+        <script src='vertex.js'></script>
+        <script src='matrix.js'></script>
+        <script src='mesh.js'></script>
+        <script src='canvas.js'></script>
+        <script src='gua3dString.js'></script>
+        <script src='guaimage.js'></script>
+    </head>
+    <body>
+        <canvas id="id-canvas" width="800" height="500"></canvas>
+<script>
+const __main = function() {
+    let canvas = GuaCanvas.new('#id-canvas')
+    // let v1 = GuaVertex.new(GuaVector.new(150, 10), GuaColor.red())
+    // let v2 = GuaVertex.new(GuaVector.new(10, 100), GuaColor.blue())
+    // let v3 = GuaVertex.new(GuaVector.new(300, 200), GuaColor.green())
+    // canvas.drawScanline(v1, v2)
+    // canvas.drawTriangle(v1, v2, v3)
+
+    // let mesh = GuaMesh.cube()
+    // mesh.position = GuaVector.new(0, 2, 1)
+    // let mesh2 = GuaMesh.cube()
+    // mesh2.position = GuaVector.new(3, 1, 1)
+    // let mesh3 = GuaMesh.cube()
+    // mesh3.position = GuaVector.new(-3, 1, 1)
+
+    let gua3d = GuaMesh.fromGua3d(gua3dString)
+    gua3d.position = GuaVector.new(0, -2, 0)
+    gua3d.fromGuaImage(guaImageString)
+    canvas.image = {}
+    canvas.image.pixels = gua3d.pixels
+    canvas.image.w = gua3d.w
+    canvas.image.h = gua3d.h
+    // canvas.drawImage([gua3d.w, gua3d.h, gua3d.pixels])
+    // canvas.render()
+
+    setInterval(function() {
+        canvas.clear()
+
+        // mesh.rotation.x += 0.1
+        // mesh.rotation.y += 0.1
+        // canvas.drawMesh(mesh)
+        // //
+        // mesh2.rotation.x += -0.2
+        // mesh2.rotation.y += -0.2
+        // mesh3.rotation.x += 0.3
+        // mesh3.rotation.y += 0.3
+        // canvas.drawMesh(mesh2)
+        // canvas.drawMesh(mesh3)
+
+        gua3d.rotation.y += 0.1
+        canvas.drawMesh(gua3d)
+
+        canvas.render()
+    }, 200)
+
+}
+
+__main()
+</script>
+    </body>
+</html>
